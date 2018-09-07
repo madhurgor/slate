@@ -111,5 +111,8 @@
     "test": "cross-env BABEL_ENV=test FORBID_WARNINGS=true mocha --require babel-core/register ./packages/*/test/index.js",
     "test:coverage": "cross-env NODE_ENV=test nyc yarn test",
     "watch": "rollup --config ./support/rollup/config.js --watch"
+  },
+  "dependencies": {
+    "re-resizable": "^4.8.1"
   }
 }

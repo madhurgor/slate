@@ -7,6 +7,15 @@ import imageExtensions from 'image-extensions'
 import isUrl from 'is-url'
 import styled from 'react-emotion'
 import { Button, Icon, Toolbar } from '../components'
+import Resizable from 're-resizable'
+
+const resizableBlockStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  border: 'solid 1px #ddd',
+  background: '#f0f0f0',
+}
 
 /**
  * A styled image block component.
@@ -133,7 +142,19 @@ class Images extends React.Component {
     switch (node.type) {
       case 'image': {
         const src = node.data.get('src')
-        return <Image src={src} selected={isFocused} {...attributes} />
+        return (
+          <div>
+            <Resizable
+              style={resizableBlockStyle}
+              defaultSize={{
+                width: 150,
+                height: 150,
+              }}
+            >
+              <Image src={src} selected={isFocused} {...attributes} />
+            </Resizable>
+          </div>
+        )
       }
     }
   }
